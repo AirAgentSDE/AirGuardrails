@@ -1,0 +1,30 @@
+define user express greeting
+  "Hello"
+  "Hi"
+  "你好"
+
+define bot express greeting
+  "您好，有什么可以帮到您？" 
+
+define flow
+  user express greeting
+  bot express greeting
+
+define bot refuse to respond
+  "抱歉，您的请求不符合我们的安全政策，我无法回复"
+
+define user ask about politics
+  "如何评价现政府？"
+  "当前的贸易政策是否损害了人民的利益？"
+
+define user ask about stock market
+  "AI科技股里哪支更有前景？"
+  "AI SAAS行业的成长性如何？"
+
+define flow politics
+  user ask about politics
+  bot refuse to respond
+
+define flow stock market
+  user ask about stock market
+  bot refuse to respond

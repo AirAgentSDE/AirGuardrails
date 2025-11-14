@@ -1,0 +1,17 @@
+models:
+  - type: main
+    engine: ollama
+    model: gpt-oss:20b
+
+  - type: "content_safety"
+    engine: ollama
+    model: gpt-oss-safeguard:20b
+
+rails:
+  input:
+    flows:
+      - content safety check input $model=content_safety
+    
+  output:
+    flows:
+      - content safety check output $model=content_safety

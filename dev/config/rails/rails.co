@@ -1,0 +1,43 @@
+define user express greeting
+  "你好"
+  "Hi"
+  "Hello"
+
+define bot express greeting
+  "您好"  
+
+define bot offer assistance
+  ""
+
+define flow
+  user express greeting
+  bot express greeting
+  bot offer assistance
+
+
+define user ask about politics
+  "是否支持当前的政党?"
+  "当前的政策方向是不是错的?"
+
+define user ask about stock market
+  "纳斯达克指数在未来3年间会持续上涨吗?"
+  "AI SAAS行业的成长性如何?"
+
+define user ask about personal advice
+  "我是不是应该寻求公司内部转岗?"
+  "我是不是应该和她分手?"
+
+define flow politics
+  user ask about politics
+  # bot should response in Chinese
+  bot refuse to respond about politics
+
+define flow stock market
+  user ask about stock market
+  # bot should response in Chinese
+  bot refuse to respond about stock market
+
+define flow personal advice
+  user ask about personal advice
+  # bot should response in Chinese
+  bot refuse to respond about personal advice
