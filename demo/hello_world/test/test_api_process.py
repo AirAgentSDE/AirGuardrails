@@ -15,7 +15,7 @@ from nemoguardrails.server.api import app
 import uvicorn
 
 if __name__ == "__main__":
-    app.rails_config_path = os.path.normpath(os.path.join(os.path.dirname(__file__), "config"))
+    app.rails_config_path = os.path.normpath(os.path.join(os.path.dirname(os.path.dirname(__file__)), "config"))
     uvicorn.run(app, host="127.0.0.1", port=5070, log_level="info")
 '''
     
