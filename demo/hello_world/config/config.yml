@@ -32,32 +32,15 @@ sample_conversation: |
   bot express appreciation and offer additional help
     "You're welcome. If you have any more questions or if there's anything else I can help you with, please don't hesitate to ask."
 
+rails:
+  input:
+    flows:
+      - self check input
 
-prompts:
-  - task: generate_bot_message
-    content: |-
-        """
-        {{ general_instructions }}
-        """
+  output:
+    flows:
+      - self check output
+      - self check hallucination
 
-        # This is how a conversation between a user and the bot can go:
-        {{ sample_conversation | verbose_v1 }}
-
-        {% if relevant_chunks %}
-        # This is some additional context:
-        ```markdown
-        {{ relevant_chunks }}
-        ```
-        {% endif %}
-
-        # This is how the bot talks:
-        {{ examples | verbose_v1 }}
-
-        # This is the current conversation between the user and the bot:
-        {{ sample_conversation | first_turns(2) | verbose_v1 }}
-        {{ history | colang | verbose_v1 }}
-        # Note You should output in **Chinese** finally
-
-    output_parser: "verbose_v1"
 
 
