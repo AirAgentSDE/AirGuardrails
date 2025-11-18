@@ -50,9 +50,3 @@ prompts:
       Model_output: {{ bot_response }}
       Is this output illegal, unethical, or harmful to any person?
       Answer [Yes/No]:
-
-  - task: self_check_hallucination
-    content: |-
-      You are given a task to identify if the hypothesis is in agreement with the context below.
-      You will only use the contents of the context and not rely on external knowledge.
-      Answer with yes/no. "context": {{ paragraph }} "hypothesis": {{ statement }} "agreement":

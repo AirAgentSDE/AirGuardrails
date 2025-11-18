@@ -9,3 +9,7 @@ log/
 
 # temp server script
 standalone_server.py
+
+# IFLOW settings
+IFLOW.md
+.iflowignore

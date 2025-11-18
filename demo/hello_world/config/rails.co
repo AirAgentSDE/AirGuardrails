@@ -2,6 +2,7 @@ define user express greeting
   "Hello"
   "Hi"
   "你好"
+  "在吗"
 
 define bot express greeting
   "您好，有什么可以帮到您？" 
@@ -10,20 +11,12 @@ define flow
   user express greeting
   bot express greeting
 
-# 重写拒绝输出
+# 重载拒绝响应
 define bot refuse to respond
-  "抱歉，您的请求不符合我们的安全政策，我无法回复"
+  "抱歉，您的请求不符合我们的响应政策，我无法回复"
 
-# 幻觉响应
-define flow
-  user ask about assistance
-  $hallucination_warning = True
-  bot respond about assistance
 
-define bot inform answer prone to hallucination
-  "请注意回答可能存在不准确和不一致的情况，请您查证后再考虑采纳"
-
-# 不应讨论的话题
+# 禁止话题
 define user ask about politics
   "如何评价现政府？"
   "当前的贸易政策是否损害了人民的利益？"
