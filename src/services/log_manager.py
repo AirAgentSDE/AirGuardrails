@@ -156,27 +156,15 @@ class LogManager:
         Returns:
             Formatted log content
         """
-        formatted = f"时间戳: {log_data.get('timestamp', 'N/A')}\n"
+        formatted = f"时间戳: {log_data.get('timestamp', 'N/A')}\n\n"
         formatted += f"安全防护模式: {'启用' if log_data.get('use_nemoguardrails', False) else '未启用'}\n\n"
-        
         formatted += f"用户输入:\n{log_data.get('user_input', 'N/A')}\n\n"
         
         if log_data.get('response'):
             formatted += f"响应内容:\n{log_data['response']}\n\n"
         
-        # Display detailed logging information when nemoguardrails is used
-        if log_data.get('use_nemoguardrails', False):
-            if log_data.get('activated_guardrails'):
-                formatted += f"激活的防护规则:\n{JsonUtils.format_for_display(log_data['activated_guardrails'])}\n\n"
-            
-            if log_data.get('colang_history'):
-                formatted += f"Colang History:\n{JsonUtils.format_for_display(log_data['colang_history'])}\n\n"
-            
-            if log_data.get('llm_calls'):
-                formatted += f"LLM Calls:\n{JsonUtils.format_for_display(log_data['llm_calls'])}\n\n"
-            
-            if log_data.get('llm_output'):
-                formatted += f"LLM输出:\n{JsonUtils.format_for_display(log_data['llm_output'])}\n\n"
+        if log_data.get('colang_history'):
+            formatted += f"响应过程(colang_history):\n{log_data['colang_history']}\n\n"
         
         return formatted
     
