@@ -8,7 +8,7 @@ import os
 sys.path.append(os.path.join(os.path.dirname(__file__), "..", "app"))
 
 try:
-    from gradio_chatbot import ChatbotInterface
+    from app.gradio_chatbot import ChatbotInterface
     print("✓ Successfully imported ChatbotInterface")
     
     # Test initialization
