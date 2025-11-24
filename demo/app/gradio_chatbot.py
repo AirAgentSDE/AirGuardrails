@@ -40,14 +40,9 @@ class ChatbotInterface:
             
             # Display detailed logging information when nemoguardrails is used
             if log_data.get('use_nemoguardrails', False):
-                if log_data.get('activated_guardrails'):
-                    formatted += f"激活的防护规则:\n{json.dumps(log_data['activated_guardrails'], indent=2, ensure_ascii=False)}\n\n"
                 
                 if log_data.get('colang_history'):
                     formatted += f"Colang History:\n{json.dumps(log_data['colang_history'], indent=2, ensure_ascii=False)}\n\n"
-                
-                if log_data.get('llm_output'):
-                    formatted += f"LLM输出:\n{json.dumps(log_data['llm_output'], indent=2, ensure_ascii=False)}\n\n"
                 
             return formatted
         except Exception as e:
@@ -65,11 +60,8 @@ class ChatbotInterface:
                         "content": user_input
                     }],
                     "options": {
-                        "llm_output": True,
                         "log": {
-                            "activated_rails": True,
-                            "llm_calls": True,
-                            "colang_history": True,
+                            "colang_history": True
                         }
                     }
                 },
@@ -95,7 +87,7 @@ class ChatbotInterface:
             response.raise_for_status()
             return response.json()
         except requests.exceptions.RequestException as e:
-            return {"error": f"蓝擎直接对话服务请求失败: {str(e)}"}
+            return {"error": f"Ollama直接对话服务请求失败: {str(e)}"}
     
     def save_log(self, user_input: str, response_data: Dict[str, Any], use_nemoguardrails: bool):
         """Save interaction log"""
@@ -113,16 +105,11 @@ class ChatbotInterface:
             # Extract response content based on the source
             if use_nemoguardrails and "messages" in response_data:
                 log_data["response"] = response_data["messages"][0]["content"]
-                
-                if "llm_output" in response_data:
-                    log_data["llm_output"] = response_data["llm_output"] 
 
                 # Extract detailed logging information when using nemoguardrails
                 if "log" in response_data:
                     log_info = response_data["log"]
                     log_data["colang_history"] = log_info.get("colang_history", "")
-                    log_data["activated_guardrails"] = log_info.get("activated_rails", [])
-                    log_data["llm_calls"] = log_info.get("llm_calls", [])
                     
             elif not use_nemoguardrails and "response" in response_data:
                 log_data["response"] = response_data["response"]
@@ -152,7 +139,7 @@ class ChatbotInterface:
             if response_data:
                 response = response_data["response"]
             else:
-                response = "蓝擎直接对话服务返回了意外的响应格式"
+                response = "Ollama直接对话服务返回了意外的响应格式"
         
         # Save log
         self.save_log(message, response_data, use_nemoguardrails)
@@ -166,9 +153,9 @@ class ChatbotInterface:
     
     def create_interface(self):
         """Create the Gradio interface"""
-        with gr.Blocks(title="蓝擎智能助手", theme=gr.themes.Soft()) as interface:
-            gr.Markdown("# 🤖 蓝擎智能助手")
-            gr.Markdown("与蓝擎智能助手对话，支持安全防护模式和直接对话模式，可查看调试日志。")
+        with gr.Blocks(title="蓝擎安全助手", theme=gr.themes.Soft()) as interface:
+            gr.Markdown("# 🤖 蓝擎安全助手")
+            gr.Markdown("与蓝擎安全助手对话，支持安全防护模式和直接对话模式，可查看调试日志。")
             
             with gr.Row():
                 with gr.Column(scale=2):

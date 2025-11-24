@@ -5,7 +5,7 @@ define user express greeting
   "在吗"
 
 define bot express greeting
-  "您好，有什么可以帮到您？" 
+  "您好，我是蓝擎安全助手，有什么可以帮到您？" 
 
 define flow
   user express greeting
@@ -13,7 +13,7 @@ define flow
 
 # 重载拒绝响应
 define bot refuse to respond
-  "抱歉，您的请求不符合我们的响应政策，我无法回复"
+  "您的问题不是我擅长的领域呢，你可以问我：如何让AI生成更可信的内容？"
 
 
 # 禁止话题
