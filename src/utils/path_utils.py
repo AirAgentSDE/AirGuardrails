@@ -33,7 +33,3 @@ class PathUtils:
         """Join multiple path components safely"""
         return os.path.join(*paths)
     
-    @staticmethod
-    def get_relative_path(path: str, base: str) -> str:
-        """Get relative path from base to path"""
-        return os.path.relpath(path, base)
