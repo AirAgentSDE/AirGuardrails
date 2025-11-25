@@ -40,10 +40,7 @@ try:
     except Exception as e:
         print(f"⚠ Cannot connect to Ollama server: {e}")
     
-    print("\n🎉 All basic tests passed! The Gradio interface should work correctly.")
-    
 except ImportError as e:
     print(f"❌ Import error: {e}")
-    print("Please install gradio: pip install gradio")
 except Exception as e:
     print(f"❌ Error: {e}")
