@@ -12,4 +12,4 @@ standalone_server.py
 
 # IFLOW settings
 IFLOW.md
-.iflowignore
+.iflow*
