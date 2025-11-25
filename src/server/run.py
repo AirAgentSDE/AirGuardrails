@@ -1,11 +1,11 @@
 import os
 import signal
 import sys
+sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
 from nemoguardrails.server.api import app
 import uvicorn
+from utils.path_utils import PathUtils
 
-def get_config_dir():
-    return os.path.join(os.path.dirname(os.path.dirname(__file__)), "config")
 
 def signal_handler(sig, frame):
     """信号处理器，用于优雅关闭"""
@@ -19,9 +19,13 @@ def main():
     signal.signal(signal.SIGINT, signal_handler)
     
     # 配置NeMo Guardrails
-    config_path = get_config_dir()
+    config_path = PathUtils.get_config_dir()
     print(f"NeMo Guardrails配置路径: {config_path}")
     
+    # 启动服务器
+    print("启动NeMo Guardrails服务器...")
+    print("服务器地址: http://127.0.0.1:5070")
+    print("按 Ctrl+C 停止服务器")
     app.rails_config_path = config_path
     try:
         uvicorn.run(
