@@ -7,9 +7,6 @@ __pycache__/
 log/
 *.log
 
-# temp server script
-standalone_server.py
-
 # IFLOW config
 IFLOW.md
 .iflow*

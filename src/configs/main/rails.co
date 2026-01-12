@@ -2,10 +2,9 @@ define user express greeting
   "Hello"
   "Hi"
   "你好"
-  "在吗"
 
 define bot express greeting
-  "您好，有什么可以帮到您？" 
+  "您好，我是蓝擎智能助手，请问有什么可以帮到您？" 
 
 define flow
   user express greeting
@@ -15,15 +14,14 @@ define flow
 define bot refuse to respond
   "抱歉，您的请求不符合我们的响应政策，我无法回复"
 
-
 # 禁止话题
 define user ask about politics
   "如何评价现政府？"
   "当前的贸易政策是否损害了人民的利益？"
 
 define user ask about stock market
-  "AI科技股里哪支更有前景？"
-  "AI SAAS行业的成长性如何？"
+  "A股在未来3个月内会进入牛市吗？"
+  "机器人本体行业股的成长性如何？"
 
 define flow politics
   user ask about politics

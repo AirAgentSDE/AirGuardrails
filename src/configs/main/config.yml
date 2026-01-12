@@ -1,0 +1,5 @@
+models:
+  - type: main
+    engine: ollama
+    model: qwen3:30b-instruct
+    

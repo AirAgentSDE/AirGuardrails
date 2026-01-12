@@ -1,10 +1,8 @@
 import os
 import signal
 import sys
-sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
 from nemoguardrails.server.api import app
 import uvicorn
-from utils.path_utils import PathUtils
 
 
 def signal_handler(sig, frame):
@@ -17,9 +15,9 @@ def main():
     """主函数：启动NeMo Guardrails服务器"""
     # 设置信号处理器
     signal.signal(signal.SIGINT, signal_handler)
-    
+
     # 配置NeMo Guardrails
-    config_path = PathUtils.get_config_dir()
+    config_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), "configs")
     print(f"NeMo Guardrails配置路径: {config_path}")
     
     # 启动服务器

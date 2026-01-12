@@ -1,0 +1,17 @@
+models:
+  - type: self_check_input
+    engine: ollama
+    model: qwen3:4b-instruct-2507-q8_0
+
+  - type: self_check_output
+    engine: ollama
+    model: qwen3:4b-instruct-2507-q8_0
+
+rails:
+  input:
+    flows:
+      - self check input
+
+  output:
+    flows:
+      - self check output
