@@ -1,0 +1,8 @@
+# determine activation in which use case
+define flow
+  user ask about investment
+  $hallucination_warning = True
+  bot respond about investment
+# override warning
+define bot inform answer prone to hallucination
+  "请注意AI生成的内容存在幻觉风险, 请您慎重参考"

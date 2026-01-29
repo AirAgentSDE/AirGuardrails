@@ -6,7 +6,3 @@ __pycache__/
 # Log files
 log/
 *.log
-
-# IFLOW config
-IFLOW.md
-.iflow*

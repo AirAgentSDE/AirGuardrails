@@ -2,6 +2,7 @@ define user express greeting
   "Hello"
   "Hi"
   "你好"
+  "在吗"
 
 define bot express greeting
   "您好，我是蓝擎智能助手，请问有什么可以帮到您？" 
@@ -10,23 +11,40 @@ define flow
   user express greeting
   bot express greeting
 
-# 重载拒绝响应
+# 重写拒绝响应
 define bot refuse to respond
-  "抱歉，您的请求不符合我们的响应政策，我无法回复"
+  "抱歉，您的请求不符合我们的使用政策，我无法回复"
 
-# 禁止话题
-define user ask about politics
-  "如何评价现政府？"
-  "当前的贸易政策是否损害了人民的利益？"
+define bot warn unprofessional advice
+  "人工智能生成内容可能不准确，建议您咨询专业人士"
 
-define user ask about stock market
-  "A股在未来3个月内会进入牛市吗？"
-  "机器人本体行业股的成长性如何？"
 
-define flow politics
-  user ask about politics
-  bot refuse to respond
+# 阻止未授权的专业领域建议
+define user ask about investment
+  "我应该买什么股票？"
+  "这个理财产品怎么样？"
+  "给我一些投资建议"
 
-define flow stock market
-  user ask about stock market
-  bot refuse to respond
+define flow investment
+  user ask about investment
+  bot warn unprofessional advice
+
+
+define user ask about healthcare
+  "我头痛该怎么办？"
+  "这个药有什么副作用？"
+  "我需要吃什么保健品？"
+
+define flow healthcare
+  user ask about healthcare
+  bot warn unprofessional advice
+
+
+define user ask about law
+  "这个合同是否合法？"
+  "我该如何起诉对方？"
+  "这个案件会怎么判？"
+
+define flow law
+  user ask about law
+  bot warn unprofessional advice

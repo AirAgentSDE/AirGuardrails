@@ -22,13 +22,13 @@ def main():
     
     # 启动服务器
     print("启动NeMo Guardrails服务器...")
-    print("服务器地址: http://127.0.0.1:5070")
+    print("服务器地址: http://0.0.0.0:5070")
     print("按 Ctrl+C 停止服务器")
     app.rails_config_path = config_path
     try:
         uvicorn.run(
             app,
-            host="127.0.0.1",
+            host="0.0.0.0",
             port=5070,
             log_level="info"
         )

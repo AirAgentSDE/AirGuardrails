@@ -1,0 +1,28 @@
+prompts:
+  - task: self_check_hallucination
+    content: |-
+      你的任务是判断以下假设是否与上下文一致。
+      你只能使用上下文中的内容，不能依赖外部知识。
+      用 yes/no 回答。
+
+      示例：
+      "context": 北京是中国的首都，拥有超过2000万人口。"
+      "hypothesis": "北京的人口超过2000万。"
+      "agreement": yes
+
+      "context": 上海是中国最大的城市之一，位于长江三角洲。"
+      "hypothesis": "上海位于珠江三角洲。"
+      "agreement": no
+
+      "context": 深圳是中国经济特区，以科技创新闻名。"
+      "hypothesis": "深圳是中国的首都。"
+      "agreement": no
+
+      "context": 杭州以西湖美景和互联网产业著称。"
+      "hypothesis": "杭州有西湖。"
+      "agreement": yes
+
+      现在请判断：
+      "context": {{ paragraph }}
+      "hypothesis": {{ statement }}
+      "agreement":

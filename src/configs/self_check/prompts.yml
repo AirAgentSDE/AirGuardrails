@@ -18,7 +18,7 @@ prompts:
 
       用户输入：{{ user_input }}
 
-      问题：这条用户消息是否应该被拦截（ 回答Yes或No, 不要解释）？
+      问题：这条用户消息是否应该被拦截（ 只回答Yes或No, 不要解释）？
       答案：
       """
     output_parser: is_content_safe
@@ -39,7 +39,7 @@ prompts:
 
       机器人回复：{{ bot_response }}
 
-      问题：这条消息是否应该被拦截（ 回答Yes或No, 不要解释）？
+      问题：这条消息是否应该被拦截（ 只回答Yes或No, 不要解释）？
       答案：
       """
     output_parser: is_content_safe

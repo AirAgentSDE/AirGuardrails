@@ -2,7 +2,7 @@ prompts:
   # Prompt for detecting the user message canonical form.
   - task: generate_user_intent
     models:
-      - qwen3:30b-instruct
+      - glm-4.7-flash:latest
     content: |-
       """
       {{ general_instructions }}
@@ -37,7 +37,7 @@ prompts:
   # Prompt for generating the next steps, currently only generate bot intent from user intent.
   - task: generate_next_steps
     models:
-      - qwen3:30b-instruct
+      - glm-4.7-flash:latest
     content: |-
       """
       {{ general_instructions }}
@@ -71,7 +71,7 @@ prompts:
   # Prompt for generating the bot message from a canonical form.
   - task: generate_bot_message
     models:
-      - qwen3:30b-instruct
+      - glm-4.7-flash:latest
     content: |-
       """
       {{ general_instructions }}
@@ -113,7 +113,7 @@ prompts:
   # Prompt for generating the user intent, next steps and bot message in a single call.
   - task: generate_intent_steps_message
     models:
-      - qwen3:30b-instruct
+      - glm-4.7-flash:latest
     mode: standard
     content: |-
       """

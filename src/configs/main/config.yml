@@ -1,5 +1,4 @@
 models:
   - type: main
     engine: ollama
-    model: qwen3:30b-instruct
-    
+    model: glm-4.7-flash:latest
