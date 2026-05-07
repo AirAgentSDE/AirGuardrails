@@ -1,4 +1,0 @@
-rails:
-  output:
-    flows:
-      - self check hallucination

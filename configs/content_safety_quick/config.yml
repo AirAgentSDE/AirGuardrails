@@ -1,0 +1,22 @@
+models:
+  - type: content_safety_quick
+    engine: vllm_openai
+    parameters:
+      openai_api_base: http://127.0.0.1:8000/v1
+      model_name: Qwen/Qwen3Guard-Gen-0.6B
+      openai_api_key: "not-used"
+      temperature: 0.0
+
+rails:
+  input:
+    flows:
+      - content safety check input $model=content_safety_quick
+  output:
+    flows:
+      - content safety check output $model=content_safety_quick
+  configs:
+    content_safety:
+      multilingual:
+        enabled : false
+        refusal_messages:
+          zh: "抱歉，这个问题我无法回答，换个问题试试吧。"

@@ -1,0 +1,13 @@
+prompts:
+  - task: content_safety_check_input $model=content_safety_quick
+    content: |
+      {{ user_input }}
+    output_parser: is_content_safe
+    max_tokens: 128
+
+  - task: content_safety_check_output $model=content_safety_quick
+    content: |
+      user: {{ user_input }}
+      assistant: {{ bot_response }}
+    output_parser: is_content_safe
+    max_tokens: 128

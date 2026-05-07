@@ -1,0 +1,21 @@
+models:
+  - type: content_safety_reason
+    engine: llamacpp
+    parameters:
+      openai_api_base: "http://localhost:8002/v1"
+      model_name: "unsloth/gpt-oss-safeguard-20b-GGUF:F16"
+      openai_api_key: "not-used"
+
+rails:
+  input:
+    flows:
+      - content safety check input $model=content_safety_reason
+  output:
+    flows:
+      - content safety check output $model=content_safety_reason
+  configs:
+    content_safety:
+      multilingual:
+        enabled : false
+        refusal_messages:
+          zh: "抱歉，这个问题我无法回答，换个问题试试吧。"

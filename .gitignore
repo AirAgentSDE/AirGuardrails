@@ -3,6 +3,11 @@ __pycache__/
 *.py[cod]
 *$py.class
 
-# Log files
-log/
-*.log
+# Tracing
+.cache/
+
+# Environment variables
+.env
+
+# Agent
+.claude
