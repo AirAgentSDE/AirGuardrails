@@ -3,11 +3,11 @@ prompts:
     content: |
       {{ user_input }}
     output_parser: is_content_safe
-    max_tokens: 128
+    max_tokens: 10
 
   - task: content_safety_check_output $model=content_safety_quick
     content: |
       user: {{ user_input }}
       assistant: {{ bot_response }}
     output_parser: is_content_safe
-    max_tokens: 128
+    max_tokens: 10
