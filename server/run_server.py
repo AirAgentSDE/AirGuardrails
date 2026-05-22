@@ -1,9 +1,6 @@
 import argparse
 import os
-
-
-def get_configs_path() -> str:
-    return os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "configs")
+import sys
 
 
 def main():
@@ -12,14 +9,20 @@ def main():
     parser.add_argument("--port", type=int, default=8080, help="Listen port (default: 8080)")
     args = parser.parse_args()
 
+    if not (1 <= args.port <= 65535):
+        parser.error(f"Invalid port: {args.port} (must be 1-65535)")
+
+    config_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "configs")
+    if not os.path.isdir(config_path):
+        print(f"Config directory not found: {config_path}", file=sys.stderr)
+        sys.exit(1)
+
     from dotenv import load_dotenv
     load_dotenv()
 
-    config_path = get_configs_path()
-
     from nemoguardrails.server import api
 
-    api.app.rails_config_path = os.path.expanduser(config_path.rstrip(os.path.sep))
+    api.app.rails_config_path = config_path
     api.app.disable_chat_ui = True
 
     if args.dev:

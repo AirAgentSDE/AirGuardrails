@@ -3,15 +3,8 @@ __pycache__/
 *.py[cod]
 *$py.class
 
-# Tracing
-.cache/
-
-# Environment variables
+# Local Environment variables
 .env
 
-# Agent
+# Unnecessary Agentic Coding Cache
 .claude
-
-# Build
-server/build/
-target/

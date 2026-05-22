@@ -10,21 +10,18 @@ safer_client = OpenAI(
 
 def instant_request_safe():
     completion = safer_client.chat.completions.create(
-        model="hf.co/unsloth/Qwen3.6-27B-GGUF:Q4_K_M",
+        model="glm-4.7",
         messages=[
-            {"role": "user", "content": "Write a hello world program in Rust."}
+            {"role": "user", "content": "Write a hello world program in Python."}
         ],
         extra_body={
             "guardrails": {
-                "config_ids": ["content_safety_reasoning", "main"],
+                "config_ids": ["content_safety_quick"],
                 "options": {
                     "rails": {
                         "input": True,
                         "output": True,
-                        "dialog": True
-                    },
-                    "llm_params": {
-                        "stop": None
+                        "dialog": True,
                     },
                     "log": {
                         "activated_rails": True,
@@ -35,7 +32,7 @@ def instant_request_safe():
         }
     )
     print(completion.choices[0].message.content)
-    print("-"*20)
+    print("-" * 20)
     print(completion)
 
 
