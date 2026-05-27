@@ -12,7 +12,7 @@ def main():
     if not (1 <= args.port <= 65535):
         parser.error(f"Invalid port: {args.port} (must be 1-65535)")
 
-    config_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "configs")
+    config_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "configs")
     if not os.path.isdir(config_path):
         print(f"Config directory not found: {config_path}", file=sys.stderr)
         sys.exit(1)
