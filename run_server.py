@@ -3,7 +3,7 @@ import os
 
 
 def get_configs_path() -> str:
-    return os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "configs")
+    return os.path.join(os.path.dirname(os.path.abspath(__file__)), "configs")
 
 
 def main():
