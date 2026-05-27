@@ -1,4 +1,0 @@
-models:
-  - type: main
-    engine: ollama
-    model: glm-4.7-flash:latest

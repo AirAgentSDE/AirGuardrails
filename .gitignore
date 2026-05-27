@@ -3,6 +3,8 @@ __pycache__/
 *.py[cod]
 *$py.class
 
-# Log files
-log/
-*.log
+# Environment variables
+.env
+
+# Agent
+.claude
